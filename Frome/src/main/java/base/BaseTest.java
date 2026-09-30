@@ -1,5 +1,7 @@
 package base;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +14,11 @@ public class BaseTest {
     public void setUp() {
         driver = DriverFactory.initDriver("chrome");
         driver.get("https://www.fossil.in/");
+        
+       
+
+        // ✅ Add implicit wait (example: 10 seconds)
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterMethod

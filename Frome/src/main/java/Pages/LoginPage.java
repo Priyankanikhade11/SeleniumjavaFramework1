@@ -13,7 +13,7 @@ public class LoginPage {
     // Locators
     private By emailField = By.id("login-email");
     private By passwordField = By.id("login-password");
-    private By loginButton = By.xpath("//button[contains(text(),'Sign In')]");
+    private By loginButton = By.xpath("//button[@class='login-trigger-btn']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
