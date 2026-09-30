@@ -11,8 +11,8 @@ public class E2EFlowTest extends BaseTest {
 
     @Test
     public void testProductFlow() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("testuser@example.com", "password123");
+    	 LoginPage loginPage = new LoginPage(driver);
+    	 loginPage.loginWithMobile("9075344757");  // dummy test number
 
         HomePage homePage = new HomePage(driver);
         homePage.searchProduct("Watch");
