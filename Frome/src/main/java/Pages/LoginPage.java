@@ -31,7 +31,7 @@ public class LoginPage {
         openLoginForm();
      // Wait for mobile field, click it, then type
         WebElement mobileInput = wait.until(ExpectedConditions.visibilityOfElementLocated(mobileField));
-        mobileInput.click();  // ✅ explicitly click into the text box
+        mobileInput.click();  // explicitly click into the text box
         mobileInput.sendKeys(mobileNumber);
         
         
