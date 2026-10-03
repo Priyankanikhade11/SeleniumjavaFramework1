@@ -9,7 +9,7 @@ public class CartPage {
 
     private By bagIcon = By.xpath("//span[@id='cartCount']"); 
     private By itemCount = By.xpath("//span[@class='ms-2']");
-    private By checkoutSummaryPrice = By.xpath("//div[@class='card-summary p-3 mb-3']");
+    private By checkoutSummaryPrice = By.xpath("//div[@class='card-summary p-3 mb-3']//span[contains(text(),'₹')]");//div[@class='card-summary p-3 mb-3']
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
