@@ -20,26 +20,29 @@ public class E2EFlowTest extends BaseTest {
 
         // Step 2: Capture product price dynamically
         String expectedPrice = productPage.getProductPrice();
-        
+        System.out.println("📦 Captured Product Price on Product Page: " + expectedPrice);
+
         // Step 3: Verify product page price
         productPage.verifyPrice(expectedPrice);
- 
 
         // Step 4: Select size if required
         productPage.selectSize();
-
         Thread.sleep(3000);
-        
+
         // Step 5: Add to cart
         productPage.addToCartButton();
-        
         Thread.sleep(3000);
 
         // Step 6: Go to cart and verify
         CartPage cartPage = new CartPage(driver);
         cartPage.BagButton();
-        
-        //cartPage.verifyItemCount(1); // ✅ cleaned parsing
-        cartPage.verifyCheckoutSummary(expectedPrice); // ✅ dynamic check
+
+        // Print + verify item count
+        cartPage.verifyItemCount(1);
+
+        // Print + verify checkout summary
+        cartPage.verifyCheckoutSummary(expectedPrice);
+
+        System.out.println("Test Completed: Product added to cart successfully with correct price and count.");
     }
 }

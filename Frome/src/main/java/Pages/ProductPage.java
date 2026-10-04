@@ -13,6 +13,7 @@ public class ProductPage {
     private By FirstProduct = By.xpath("//span[@class='header-search-product-title'][1]");
     private By Productprice = By.xpath("//span[@class='pro-price text-black fw-bold']");
     private By addToCartButton = By.xpath("//button[@class='btn-add-bag']");
+    //private By cartOverlayPrice  = By.xpath("//div[@class='price-tag']");
     private By sizeOptions = By.xpath("//button[contains(@class,'size-btn')]");
 
     public ProductPage(WebDriver driver) {
@@ -42,4 +43,11 @@ public class ProductPage {
     public void addToCartButton() {
         driver.findElement(addToCartButton).click();
     }
+    
+    // Verify product page price
+    public void verifyMRP(String expectedPrice) {
+        String actualPrice = getProductPrice();
+        Assert.assertEquals(actualPrice, expectedPrice, "Price mismatch on product detail page!");
+    }
+    
 }

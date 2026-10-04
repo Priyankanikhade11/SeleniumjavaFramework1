@@ -19,17 +19,30 @@ public class CartPage {
         driver.findElement(bagIcon).click();
     }
 
+ // Verify item count in cart and print it
     public void verifyItemCount(int expectedCount) {
         String countText = driver.findElement(itemCount).getText().trim();
-        // Clean string: remove everything except digits
-        countText = countText.replaceAll("[^0-9]", "");
+        countText = countText.replaceAll("[^0-9]", ""); // keep only digits
         int actualCount = Integer.parseInt(countText);
+
+        // Print to console
+        System.out.println(" Cart Item Count Displayed: " + actualCount);
+
         Assert.assertEquals(actualCount, expectedCount, "Item count mismatch in cart!");
     }
 
+   // Verify checkout summary price and print it
     public void verifyCheckoutSummary(String expectedPrice) {
         String actualPrice = driver.findElement(checkoutSummaryPrice).getText().trim();
+
+        // Print to console
+        System.out.println("Checkout Summary Price Displayed: " + actualPrice);
+
         Assert.assertEquals(actualPrice, expectedPrice, "Price mismatch in checkout summary!");
     }
+    
+
+
+    
     
 }
