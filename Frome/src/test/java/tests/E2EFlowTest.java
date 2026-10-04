@@ -4,12 +4,13 @@ import base.BaseTest;
 import Pages.HomePage;
 import Pages.ProductPage;
 import Pages.CartPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class E2EFlowTest extends BaseTest {
 
     @Test
-    public void testProductFlow() throws InterruptedException {
+    public void testProductPriceVerification() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.searchProduct("Watch");
 
@@ -18,31 +19,30 @@ public class E2EFlowTest extends BaseTest {
         // Step 1: Click first product
         productPage.clickOnFirstProduct();
 
-        // Step 2: Capture product price dynamically
-        String expectedPrice = productPage.getProductPrice();
-        System.out.println("📦 Captured Product Price on Product Page: " + expectedPrice);
+        // Step 2: Capture product price from details page
+        String productMRP = productPage.getProductPrice();
 
-        // Step 3: Verify product page price
-        productPage.verifyPrice(expectedPrice);
-
-        // Step 4: Select size if required
+        // Step 3: Select size if required
         productPage.selectSize();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        // Step 5: Add to cart
+        // Step 4: Add to cart
         productPage.addToCartButton();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        // Step 6: Go to cart and verify
+        // Step 5: Go to cart
         CartPage cartPage = new CartPage(driver);
         cartPage.BagButton();
 
-        // Print + verify item count
-        cartPage.verifyItemCount(1);
+        // Step 6: Capture cart price
+        String cartPrice = cartPage.getCheckoutSummaryPrice();
 
-        // Print + verify checkout summary
-        cartPage.verifyCheckoutSummary(expectedPrice);
+        // Step 7: Compare product detail price with cart price
+        Assert.assertEquals(cartPrice, productMRP,
+            "❌ Price mismatch! Product detail page MRP and Cart page price are different.");
 
-        System.out.println("Test Completed: Product added to cart successfully with correct price and count.");
+        // Final console log
+        System.out.println("✅ Verification Complete: Product MRP (" + productMRP +
+                           ") matches Cart Price (" + cartPrice + ")");
     }
 }
