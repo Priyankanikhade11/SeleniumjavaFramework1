@@ -42,7 +42,7 @@ public class E2EFlowTest extends BaseTest {
             "❌ Price mismatch! Product detail page MRP and Cart page price are different.");
 
         // Final console log
-        System.out.println("✅ Verification Complete: Product MRP (" + productMRP +
+        System.out.println(" Verification Complete: Product MRP (" + productMRP +
                            ") matches Cart Price (" + cartPrice + ")");
     }
 }

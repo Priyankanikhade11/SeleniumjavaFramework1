@@ -25,7 +25,7 @@ public class ProductPage {
 
     public String getProductPrice() {
         String price = driver.findElement(Productprice).getText().trim();
-        System.out.println("📦 Product MRP Price on Detail Page: " + price);
+        System.out.println(" Product MRP Price on Detail Page: " + price);
         return price;
     }
 
@@ -43,6 +43,6 @@ public class ProductPage {
 
     public void addToCartButton() {
         driver.findElement(addToCartButton).click();
-        System.out.println("🛒 Clicked on Add to Cart button.");
+        System.out.println(" Clicked on Add to Cart button.");
     }
 }

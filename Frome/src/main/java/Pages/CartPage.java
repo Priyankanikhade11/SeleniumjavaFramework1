@@ -17,19 +17,19 @@ public class CartPage {
 
     public void BagButton() {
         driver.findElement(bagButton).click();
-        System.out.println("👜 Opened Cart.");
+        System.out.println(" Opened Cart.");
     }
 
     public void verifyItemCount(int expectedCount) {
         String countText = driver.findElement(itemCount).getText().trim();
         int actualCount = Integer.parseInt(countText);
-        System.out.println("🛒 Cart Item Count Displayed: " + actualCount);
+        System.out.println(" Cart Item Count Displayed: " + actualCount);
         Assert.assertEquals(actualCount, expectedCount, "Item count mismatch in cart!");
     }
 
     public String getCheckoutSummaryPrice() {
         String actualPrice = driver.findElement(checkoutSummaryPrice).getText().trim();
-        System.out.println("💰 Checkout Summary Price in Cart: " + actualPrice);
+        System.out.println(" Checkout Summary Price in Cart: " + actualPrice);
         return actualPrice;
     }
 }
